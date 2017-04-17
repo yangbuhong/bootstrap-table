@@ -1,33 +1,53 @@
-*body{
+Skip to content This repository Pull requests Issues Gist @yangbuhong 0 0 0 yangbuhong/bootstrap-table Code Issues 0 Pull requests 0 Projects 0 Wiki Pulse Graphs Settings bootstrap-table/css/style.css 963f1e0 6 days ago @yangbuhong yangbuhong gg 34 lines (33 sloc) 496 Bytes *body {
 	padding-top: 100px;
 }
-.navbar-inverse input[type="text"]{
+.carousel-indicators {
+    bottom: -10px;  
+}
+.carousel-indicators li { 
+    width: 6px;
+    height: 6px;   
+}
+.carousel-indicators .active { 
+    width: 8px;
+    height: 8px;   
+}
+.navbar-inverse input[type="text"] {
 	background: #D0E9C6;
 	border: none;
 	color: #1B6D85;
 }
-.navbar-inverse .navbar-form{
+
+.navbar-inverse .navbar-form {
 	position: relative;
 }
-.navbar-inverse button[type="submit"]{
+
+.navbar-inverse button[type="submit"] {
 	position: absolute;
 	top: 25%;
 	right: 20px;
 	background: none;
 	border: none;
 }
-@media(min-width:768px ) {
-	.navbar-inverse button[type="submit"]{
-	top:15%;
+
+@media(min-width:768px) {
+	.navbar-inverse button[type="submit"] {
+		top: 15%;
 	}
 }
-.navbar-inverse .glyphicon{
-	color:#C4E3F3 ;
+
+.navbar-inverse .glyphicon {
+	color: #C4E3F3;
 }
+
 p {
-    margin: 60px 0 10px;
+	margin: 60px 0 10px;
 }
-img{
+
+img {
 	width: 100%;
 	overflow: hidden;
 }
+
+Contact GitHub API Training Shop Blog About © 2017 GitHub,
+Inc. Terms Privacy Security Status Help

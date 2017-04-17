@@ -1,0 +1,70 @@
+/*登录内容页面*/
+.login-form img {
+	width: 80%;
+		border-radius: 20px;
+		margin-left: 10%;
+		margin-right: 10%;
+}
+
+.login-form {
+	margin-bottom: 20%;
+	margin-top: 40%;
+
+}
+
+#login-form {
+	position: relative;
+	width: 50%;
+	margin-top: -40%;
+	margin-left: 10%;
+	padding-left: 10%;
+	padding-top: 0px;
+}
+.mui-input-row label {
+	line-height: 0.1;
+	font-size: 0.8em;
+	margin-left: 5px;
+	width: 35%;
+	margin-right: 0px;
+	padding: 18px 0px;
+}
+.mui-input-row label ~ input, .mui-input-row label ~ select, .mui-input-row label ~ textarea {
+    float: right;
+    width: 60%;
+    margin-bottom: 0;
+    padding-left: 0;
+    border: 0;
+}
+.mui-input-row {
+   position: relative;
+   background: #FFFFFF;
+   margin-top: 5px;
+   border-radius: 5px;
+}
+.mui-input-row:last-child {
+    background:#FFFFFF;
+}
+input[type="text"],
+input[type="password"] {
+	font-size: 0.8em;
+	width: 80%;
+	height: auto;
+	margin-bottom: 0px;
+	padding: 8px 0px;
+	-webkit-user-select: text;
+	border: 0px;
+	border-radius: 0px;
+	outline: 0;
+	background-color: #EEEEEE;
+}
+.login-botton{
+	position:relative;
+	margin-top: 10px;
+	width: 100%;
+		-webkit-box-shadow: inset rgba(0, 100, 223, 1) 0px 0px 20px 1px;
+				-moz-box-shadow: inset rgba(0, 100, 223, 1) 0px 0px 20px 1px;
+				-o-box-shadow: inset rgba(0, 100, 223, 1) 0px 0px 20px 1px;
+				box-shadow: inset rgba(0, 100, 223, 1) 0px 0px 20px 1px;
+border-radius: 50px;
+
+}	

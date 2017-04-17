@@ -1,0 +1,244 @@
+{
+  "main.html": {
+    "resources": [
+      "js/main.js",
+      "images/menu_search.jpg",
+      "images/menu_myorder.jpg",
+      "css/main.css",
+      "images/menu_about.jpg",
+      "images/menu_head.jpg",
+      "images/head04.jpg",
+      "images/menu_close.jpg",
+      "images/head03.jpg",
+      "images/menu_neworder.jpg",
+      "images/head02.jpg",
+      "images/head05.jpg",
+      "images/head01.jpg",
+      "images/menu_getnew.jpg",
+      "fonts/mui.ttf",
+      "images/5.png",
+      "images/2.png",
+      "images/3.png",
+      "images/1.png",
+      "images/4.png",
+      "images/6.png",
+      "js/app.js",
+      "images/menu_foot.jpg",
+      "js/mui.min.js",
+      "css/mui.min.css",
+      "libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+      "js/me.js",
+      "libs/easymob-webim-sdk/json2.js",
+      "libs/easymob-webim-sdk/jquery-1.11.1.js",
+      "js/mui.locker.js",
+      "libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+      "js/mui.view.js",
+      "css/feedback-page.css",
+      "css/feedback.css",
+      "js/swipe.js",
+      "bootstrap/fonts/glyphicons-halflings-regular.woff2",
+      "bootstrap/css/bootstrap.min.css",
+      "bootstrap/js/bootstrap.min.js",
+      "css/style.css",
+      "js/jquery.3.1.1.js",
+      "bootstrap/fonts/glyphicons-halflings-regular.woff",
+      "new.html",
+      "check.html",
+      "my.html",
+      "feedback.html",
+      "about.html"
+    ],
+    "refer": [
+      "catch-list.html",
+      "new-list.html",
+      "check-list.html",
+      "feedback.html",
+      "my-list.html",
+      "about-us.html",
+      "new.html",
+      "check.html",
+      "my.html",
+      "about.html"
+    ]
+  },
+  "login.html": {
+    "resources": [
+      "js/app.js",
+      "js/mui.min.js",
+      "css/login.css",
+      "js/login.js",
+      "css/mui.min.css",
+      "images/login_bg.png",
+      "css/style.css",
+      "js/mui.enterfocus.js",
+      "images/menu_head.jpg",
+      "images/menu_foot.jpg",
+      "fonts/mui.ttf",
+      "login.html",
+      "js/jquery.3.1.1.js",
+      "images/sinaweibo.png",
+      "images/weixin.png",
+      "images/qq.png",
+      "json/table.json",
+      "js/jquery.cookie.js"
+    ],
+    "refer": [
+      "main.html",
+      "login.html"
+    ]
+  },
+  "feedback.html": {
+    "resources": [
+      "css/feedback.css",
+      "js/mui.min.js",
+      "images/menu_head.jpg",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "images/menu_foot.jpg",
+      "js/feedback.js",
+      "main.html"
+    ],
+    "refer": [
+      "main.html"
+    ]
+  },
+  "catch-list.html": {
+    "resources": [
+      "js/feedback.js",
+      "js/mui.min.js",
+      "images/menu_head.jpg",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "images/menu_foot.jpg",
+      "bootstrap/fonts/glyphicons-halflings-regular.woff2",
+      "bootstrap/css/bootstrap.min.css",
+      "bootstrap/js/bootstrap-table.js",
+      "js/service-table.js",
+      "bootstrap/js/bootstrap.min.js",
+      "bootstrap/css/bootstrap-table.css",
+      "bootstrap/js/bootstrap-table-zh-CN.js",
+      "js/jquery.3.1.1.js"
+    ]
+  },
+  "new-list.html": {
+    "resources": [
+      "js/feedback.js",
+      "js/mui.min.js",
+      "images/menu_head.jpg",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "images/menu_foot.jpg"
+    ]
+  },
+  "check-list.html": {
+    "resources": [
+      "js/feedback.js",
+      "js/mui.min.js",
+      "images/menu_head.jpg",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "images/menu_foot.jpg",
+      "bootstrap/fonts/glyphicons-halflings-regular.woff2",
+      "bootstrap/css/bootstrap.min.css",
+      "bootstrap/js/bootstrap-table.js",
+      "js/service-table.js",
+      "js/jquery.3.1.1.js",
+      "bootstrap/js/bootstrap.min.js",
+      "bootstrap/css/bootstrap-table.css",
+      "bootstrap/js/bootstrap-table-zh-CN.js"
+    ]
+  },
+  "about-us.html": {
+    "resources": [
+      "css/about-us.css",
+      "images/about.jpg",
+      "images/menu_head.jpg",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/mui.min.js",
+      "images/menu_foot.jpg"
+    ],
+    "refer": [
+      "setting.html"
+    ]
+  },
+  "my-list.html": {
+    "resources": [
+      "js/feedback.js",
+      "js/mui.min.js",
+      "images/menu_head.jpg",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "images/menu_foot.jpg"
+    ]
+  },
+  "setting.html": {
+    "resources": [
+      "libs/easymob-webim-sdk/easemob.im-1.0.5.js",
+      "libs/easymob-webim-sdk/json2.js",
+      "libs/easymob-webim-sdk/jquery-1.11.1.js",
+      "js/mui.locker.js",
+      "css/feedback-page.css",
+      "js/feedback-page.js",
+      "libs/easymob-webim-sdk/strophe-custom-2.0.0.js",
+      "js/mui.view.js",
+      "js/app.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "js/feedback.js",
+      "about.html"
+    ],
+    "refer": [
+      "about.html"
+    ]
+  },
+  "new.html": {
+    "resources": [
+      "main.html",
+      "bootstrap/js/bootstrap-table.js",
+      "bootstrap/css/bootstrap-table.css",
+      "bootstrap/js/bootstrap-table-zh-CN.js",
+      "bootstrap/css/bootstrap.min.css",
+      "js/mui.min.js",
+      "js/jquery.3.1.1.js",
+      "images/menu_head.jpg",
+      "fonts/mui.ttf",
+      "bootstrap/js/bootstrap.min.js",
+      "css/mui.min.css",
+      "images/menu_foot.jpg"
+    ],
+    "refer": [
+      "main.html"
+    ]
+  },
+  "check.html": {
+    "resources": [
+      "bootstrap/js/bootstrap-table.js",
+      "bootstrap/css/bootstrap-table.css",
+      "bootstrap/js/bootstrap-table-zh-CN.js",
+      "main.html"
+    ],
+    "refer": [
+      "main.html"
+    ]
+  },
+  "my.html": {
+    "resources": [
+      "main.html"
+    ],
+    "refer": [
+      "main.html"
+    ]
+  },
+  "about.html": {
+    "resources": [
+      "css/about-us.css",
+      "images/about.jpg",
+      "setting.html"
+    ],
+    "refer": [
+      "setting.html"
+    ]
+  }
+}

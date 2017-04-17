@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>售服结案</title>
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="bootstrap/css/bootstrap-table.css">
+		<style>
+			.head-logo {
+				width: 100%;
+			}
+			
+			.foot-img {
+				width: 100%;
+			}
+				nav{
+				background-image: url(images/menu_foot.jpg);
+				background-repeat: no-repeat;
+				background-size: cover;
+				height: 100%;
+			}
+			a:focus,
+			a:hover {
+				text-decoration: none;
+			}
+			
+			.col-md-12 {
+				position: relative;
+				min-height: 1px;
+				padding-right: 0px;
+				padding-left: 0px;
+			}
+			
+			.panel-body {
+				padding: 15px;
+				margin-bottom: 50px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">售服结案</h1>
+			<a class=" mui-icon mui-icon-home-filled mui-pull-right main_botton"></a>
+		</header>
+		<div class="mui-content">
+			<div>
+				<img class="head-logo" src="images/menu_head.jpg" />
+			</div>
+			<div class=" col-md-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<table id="list_table" data-toggle="table" data-method="post">
+							<thead>
+							</thead>
+						</table>
+					</div>
+				</div>
+
+			</div>
+			<nav class="mui-bar mui-bar-tab">
+			</nav>
+			<script src="js/jquery.3.1.1.js"></script>
+			<script src="bootstrap/js/bootstrap.min.js"></script>
+			<script src="bootstrap/js/bootstrap-table.js"></script>
+			<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+			<script src="js/mui.min.js"></script>
+			<script type="text/javascript">
+				mui.init();
+				mui('.mui-scroll-wrapper').scroll();
+				var main_botton = $(".main_botton");
+				main_botton.on("click", function() {
+					window.location.href = "main.html";
+				})
+			</script>
+			<script>
+				function getCookie(c_name) {
+					if(document.cookie.length > 0) {
+						c_start = document.cookie.indexOf(c_name + "=")
+						if(c_start != -1) {
+							c_start = c_start + c_name.length + 1
+							c_end = document.cookie.indexOf(";", c_start)
+							if(c_end == -1) c_end = document.cookie.length
+							return unescape(document.cookie.substring(c_start, c_end))
+						}
+					}
+					return ""
+				}
+				var username = getCookie('username');
+				//获取存储的cookie	
+				$.ajax({
+					type: "post", //访问WebService使用Post方式请求
+					async: true,
+					contentType: "application/json",
+					url: "http://aeshow1.ae-cnc.com:8000/json/services_login.asmx/getMyOrdes", //调用WebService的地址和方法名称组合 ---- WsURL/方法名
+					data: "{strLoginID:'" + username + "'}", //,谨记，传递变量时，一定要用字符串拼接的形式，这里是要传递的参数，格式为 data: "{paraName:paraValue}",下面将会看到       
+					dataType: 'json', //WebService 会返回Json类型
+					success: function(json) {
+						//alert(json.d);
+						//var table_data=json.d
+						var obj = eval("(" + json.d + ")");
+						var h = "<tr><td> 服务单号 </td><td> 机台编号</td><td> 机台规格</td><td>创建时间</td><td> 问题分类</td><td> 状态</td></tr>";
+						$('#list_table').prepend(h);
+						var s = '';
+						for(var i = 0; i < obj.length; i++) {
+							$('#list_table tr:gt(1)').remove(); //删除之前的数据
+							s += '<tr><td>' + obj[i].ServicesId + '</td><td>' + obj[i].SN + '</td><td>' + obj[i].Spec + '</td>' + '<td>' + obj[i].CreateDT + '</td><td>' + obj[i].QType + '</td><td>' + obj[i].Status + '</td></tr>';
+							$('#list_table').append(s);
+							$("#list_table").find("tbody>tr").eq(0).css({
+								"box-shadow": "inset rgba(0, 100, 223, 1) 0px 0px 40px 1px",
+								"text-align": "center",
+								"bacground-color": "#fffff"
+							});
+							$("tr:gt(1)").on("click", function() {
+								var KFid = $(this).children("td").eq(0).text();
+								sessionStorage.setItem("KFid", KFid);
+								var checkQTY = $(this).children("td").eq(4).text();
+								sessionStorage.setItem("checkQTY", checkQTY);
+								var SN_ID = $(this).children("td").eq(1).text();
+								sessionStorage.setItem("SN_ID", SN_ID);
+								window.location.href = "edit.html";
+
+							})
+						}
+					},
+					error: function(XMLResponse) {
+						alert(" 错误信息：" + XMLResponse.responseText);
+					}
+				});
+			</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>我的服务单</title>
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="bootstrap/css/bootstrap-table.css">
+		<style>
+			.head-logo {
+				width: 100%;
+			}
+			
+			.foot-img {
+				width: 100%;
+			}
+			nav {
+				background-image: url(images/menu_foot.jpg);
+				background-repeat: no-repeat;
+				background-size: cover;
+				height: 100%;
+			}
+			
+			.mui-search .mui-placeholder {
+				box-shadow: inset rgba(0, 100, 223, 1) 0px 0px 20px 1px;
+			}
+			
+			.panel-body {
+				padding: 15px;
+				margin-bottom: 50px;
+				background: #FFFFFF;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">服务单查询</h1>
+			<a class=" mui-icon mui-icon-home-filled mui-pull-right main_botton"></a>
+		</header>
+		<div class="mui-content">
+			<div>
+				<img class="head-logo" src="images/menu_head.jpg" />
+			</div>
+			<div class="mui-input-row mui-search">
+				<input type="search" id="search" class="mui-input-clear" placeholder="">
+			</div>
+			<div class="panel-body">
+				<table id="search_table" data-toggle="table" data-method="post">
+					<thead>
+					</thead>
+				</table>
+			</div>
+
+		</div>
+		<nav class="mui-bar mui-bar-tab">
+		</nav>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" src="js/jquery.3.1.1.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>
+		<script src="bootstrap/js/bootstrap-table.js"></script>
+		<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui('.mui-scroll-wrapper').scroll();
+			var main_botton = $(".main_botton");
+			main_botton.on("click", function() {
+				window.location.href = "main.html";
+			})
+		</script>
+		<script>
+			function getCookie(c_name) {
+				if(document.cookie.length > 0) {
+					c_start = document.cookie.indexOf(c_name + "=")
+					if(c_start != -1) {
+						c_start = c_start + c_name.length + 1
+						c_end = document.cookie.indexOf(";", c_start)
+						if(c_end == -1) c_end = document.cookie.length
+						return unescape(document.cookie.substring(c_start, c_end))
+					}
+				}
+				return ""
+			}
+			var strLoginID = getCookie('username');
+			var strKeys = $("#search").val();
+			$.ajax({
+				type: "post", //访问WebService使用Post方式请求
+				async: true,
+				contentType: "application/json",
+				url: "http://aeshow1.ae-cnc.com:8000/json/services_login.asmx/getOrdesBySearchKeys", //调用WebService的地址和方法名称组合 ---- WsURL/方法名
+				data: "{strLoginID:'" + strLoginID + "',strKeys:'" + strKeys + "'}", //,谨记，传递变量时，一定要用字符串拼接的形式，这里是要传递的参数，格式为 data: "{paraName:paraValue}",下面将会看到       
+				dataType: 'json', //WebService 会返回Json类型
+				success: function(json) {
+					//var table_data=json.d					
+					var obj = eval("(" + json.d + ")");
+					$('#search_table tr:gt(0)').remove(); //删除之前的数据
+					var h = "<tr><td> 客服单号 </td><td> 机台号</td><td> 规格</td><td> 创建日期</td><td> 问题类型</td><td> 服务人员</td><td> 状态</td></tr>";
+					$('#search_table').append(h);
+					var s = '';
+					for(var i = 0; i < obj.length; i++) {
+						$('#search_table tr:gt(1)').remove(); //删除之前的数据
+						s += '<tr><td>' + obj[i].ServicesId + '</td><td>' + obj[i].SN + '</td><td>' + obj[i].Spec + '</td><td>' + obj[i].CreateDT + '</td><td>' + obj[i].QType + '</td><td>' + obj[i].ServiceBy + '</td><td>' + obj[i].Status + '</td></tr>';
+						$('#search_table').append(s);
+					}
+					$("#search_table").find("tbody>tr").eq(0).css({
+						"box-shadow": "inset rgba(126, 124, 124, 1) 0px 0px 40px 1px",
+						"text-align": "center",
+						"bacground-color": "#fffff"
+					});
+					$("tr:gt(1)").on("click", function() {
+						var KFid = $(this).children("td").eq(0).text();
+						sessionStorage.setItem("KFid", KFid);
+						var checkQTY = $(this).children("td").eq(4).text();
+						sessionStorage.setItem("checkQTY", checkQTY);
+						var SN_ID = $(this).children("td").eq(1).text();
+						sessionStorage.setItem("SN_ID", SN_ID);
+						window.location.href = "edit.html";
+
+					})
+				},
+				error: function(XMLResponse) {
+					alert(" 错误信息：" + XMLResponse.responseText);
+				}
+			});
+			$("#search").bind('input propertychange', function() {
+				var strKeys = $("#search").val();
+				$.ajax({
+					type: "post", //访问WebService使用Post方式请求
+					async: true,
+					contentType: "application/json",
+					url: "http://aeshow1.ae-cnc.com:8000/json/services_login.asmx/getOrdesBySearchKeys", //调用WebService的地址和方法名称组合 ---- WsURL/方法名
+					data: "{strLoginID:'" + strLoginID + "',strKeys:'" + strKeys + "'}", //,谨记，传递变量时，一定要用字符串拼接的形式，这里是要传递的参数，格式为 data: "{paraName:paraValue}",下面将会看到       
+					dataType: 'json', //WebService 会返回Json类型
+					success: function(json) {
+						if(json.d == "Empty") {
+							$('#search_table tr:gt(0)').remove();
+							$('#search_table').append('<tr class="no-records-found"><td colspan="0">' + "没找到匹配的记录" + '</td></tr>');
+						} else {
+							//var table_data=json.d					
+							var obj = eval("(" + json.d + ")");
+							var h = "<tr><td> 客服单号 </td><td> 机台号</td><td> 规格</td><td> 创建日期</td><td> 问题类型</td><td> 服务人员</td><td> 状态</td></tr>";
+							$('#search_table').append(h);
+							var s = '';
+							for(var i = 0; i < obj.length; i++) {
+								$('#search_table tr:gt(1)').remove(); //删除之前的数据
+								s += '<tr><td>' + obj[i].ServicesId + '</td><td>' + obj[i].SN + '</td><td>' + obj[i].Spec + '</td><td>' + obj[i].CreateDT + '</td><td>' + obj[i].QType + '</td><td>' + obj[i].ServiceBy + '</td><td>' + obj[i].Status + '</td></tr>';
+								$('#search_table').append(s);
+							}
+
+							$("tr:gt(1)").on("click", function() {
+								var strKFid = $(this).children("td").eq(0).text();
+								sessionStorage.setItem("ID", strKFid);
+								var SN_ID = $(this).children("td").eq(1).text();
+								sessionStorage.setItem("SN_ID", SN_ID);
+								window.location.href = "edit.html";
+
+							})
+						}
+
+					},
+					error: function(XMLResponse) {
+						alert(" 错误信息：" + XMLResponse.responseText);
+					}
+				});
+			});
+		</script>
+	</body>
+
+</html>

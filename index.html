@@ -1,222 +1,164 @@
 <!DOCTYPE html>
-<html lang="zh-hans">
+<html class="ui-page-login">
 
 	<head>
-		<meta charset="utf-8" />
+		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="lib/bootstrap/css/bootstrap-table.css">
-		<link rel="stylesheet" href="css/style.css" />
-		<title>响应式布局 </title>
-		<!--[if lt IE 9]>
-		<script src="//cdn.bootcss.com/respond.js/1.4.2/respond.js"></script>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <![endif]-->
+		<title></title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/style.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/login.css" />
+		<style>
+			.head-logo {
+				width: 100%;
+			}	
+			.foot-img {
+				width: 100%;
+			
+			}
+				nav{
+				background-image: url(images/menu_foot.jpg);
+				background-repeat: no-repeat;
+				background-size: cover;
+				height: 100%;
+			}
+			.rem label {
+				font-family: "微软雅黑";
+				color: #E3E3E3;
+				font-size: 0.8rem;
+			}
+			nav{
+				background-image: url(images/menu_foot.jpg);
+				background-repeat: no-repeat;
+				background-size: cover;
+				height: 100%;
+			}
+	
+		</style>
 	</head>
 
 	<body>
-		<nav class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container">
-				<div class="navbar-header">
-					<botton class="navbar-toggle" data-toggle="collapse" data-target="#responsive-navbar">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</botton>
-					<a href="#" class="navbar-brand"><strong>Yangbb</strong>.net</a>
-				</div>
-				<div class="collapse navbar-collapse" id="responsive-navbar">
-					<ul class="nav navbar-nav">
-						<li class="active dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="#">demo演示
-								<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li>
-									<a href="#">3D旋转照片墙</a>
-								</li>
-								<li>
-									<a href="#">关于我</a>
-								</li>
-								<li>
-									<a href="#">我的实践经历</a>
-								</li>
-
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="#">博客
-								<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li>
-									<a href="#">我的收藏</a>
-								</li>
-								<li>
-									<a href="#">原创</a>
-								</li>
-								<li>
-									<a href="#">转载</a>
-								</li>
-
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="#">学习手册
-								<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li>
-									<a href="#">css3</a>
-								</li>
-								<li>
-									<a href="#">Bootstrap</a>
-								</li>
-								<li>
-									<a href="#">javascript</a>
-								</li>
-								<li class="divider"></li>
-								<li>
-									<a href="#">html5</a>
-								</li>
-								<li>
-									<a href="#">MUI</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-					<form action="" class="navbar-form navbar-left">
-						<input type="text" placeholder="搜索" class="form-control">
-						<botton type="submit">
-							<span class="glyphicon glyphicon-search"></span>
-						</botton>
-					</form>
-					<a href="" class="btn btn-primary btn-sm navbar-btn navbar-right hidden-xs">订阅课程</a>
-					<div class="profile navbar-right">
-						<ul class="nav navbar-nav ">
-							<li>
-								<a href="">注册</a>
-							</li>
-							<li>
-								<a href="login.html" data-toggle="modal" data-target="#login-modal">登录</a>
-							</li>
-						</ul>
-						<p class="navbar-text">
-							<a href="" class="navbar-link">您好，杨宝宝</a>
-						</p>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">登录</h1>
+		</header>
+		<div class="mui-content">
+			<div>
+				<img class="head-logo" src="images/menu_head.jpg" />
+			</div>
+			<div class="login-form">
+				<img src="images/login_bg.png" />
+				<form id='login-form'>
+					<div class="mui-input-row">
+						<label>账号：</label>
+						<input id='account' type="text" class="mui-input-clear mui-input" placeholder="请输入账号">
 					</div>
-				</div>
-			</div>
-		</nav>
-
-		<div class="carousel slide" data-ride="carousel" id="slideshow">
-			<ol class="carousel-indicators">
-				<li data-target="#slideshow" data-slide-to="0" class="active"></li>
-				<li data-target="#slideshow" data-slide-to="1"></li>
-			</ol>
-			<div class="carousel-inner">
-				<div class="item active">
-					<img src="img/page1.png" alt="">
-					<div class="carousel-caption">
-						<h2>Bootstrap</h2>
-						<p></p>
+					<div class="mui-input-row">
+						<label>密码：</label>
+						<input id='password' type="password" class="mui-input-clear mui-input" placeholder="请输入密码">
 					</div>
-				</div>
-				<div class="item">
-					<img src="img/page2.png" alt="">
-					<div class="carousel-caption">
-						<h2>Javascript</h2>
-						<p></p>
-					</div>
-				</div>
-			</div>
-			<a href="" data-slide="prev" class="left carousel-control">
-				<span class="glyphicon glyphicon-chevron-left"></span>
-			</a>
-			<a href="" data-slide="next" class="right carousel-control">
-				<span class="glyphicon glyphicon-chevron-right"></span>
-			</a>
-		</div>
+					<button id="login" class="mui-btn login-botton " type="button" onkeydown="keydown(event)">登录</button>
+					<!--<div class="rem">
+						<input type="checkbox" id="ck_rmbUser" /><label>记住账户密码</label></br>
+					</div>-->
+				</form>
 
-		<div class="col-md-offset-3 col-md-6">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title text-center">值日表</h3>
-				</div>
-				<div class="panel-body">
-					<!--<div id="toolbar" class="btn-group">
-						<button id="btn_edit" type="button" class="btn btn-default">
- <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
- </button>
-						<button id="btn_delete" type="button" class="btn btn-default">
- <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
- </button>-->
-				</div>
-				<table id="teacher_table" data-toggle="table" data-method="post" data-query-params="queryParams" data-toolbar="#toolbar" data-pagination="true" data-search="true" data-show-refresh="true" data-show-toggle="true" data-show-columns="true" data-page-size="5">
-					<thead>
-						<!--<tr>
-							<th data-field="name">用户账号</th>
-							<th data-field="pwd">用户密码</th>
-							<th data-field="t_name">教师姓名</th>
-						</tr>-->
-					</thead>
-				</table>
 			</div>
+			<nav class="mui-bar mui-bar-tab">
+				
+			</nav>
 		</div>
-		</div>
-
-		<div class="modal fade" id="login-modal" tabindex="-1" data-backdrop="true" data-remote="login.html">
-			<div class="modal-dialog modal-sm">
-				<div class="modal-content">
-
-				</div>
-			</div>
-		</div>
-		<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-		<script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="https://cdn.rawgit.com/imsky/holder/master/holder.js"></script>
-		<script src="lib/bootstrap/js/bootstrap-table.js"></script>
-		<script src="lib/bootstrap/js/bootstrap-table-zh-CN.js"></script>
+		<script src="js/jquery.3.1.1.js"></script>
+		<script type="text/javascript" src="js/jquery.cookie.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/mui.enterfocus.js"></script>
+		<script src="js/app.js"></script>
 		<script>
-			$('#teacher_table').bootstrapTable({
-				columns: [{
-					field: 'id',
-					title: 'Item ID'
-				}, {
-					field: 'name',
-					title: 'Item Name'
-				}, {
-					field: 'attend',
-					title: 'Item attend'
-				},
-				{
-					field: 'absent',
-					title: 'Item absent'
-				},
-				{
-					field: 'Date',
-					title: 'Item Date'
-				}],
-				data: [{
-					id: 1,
-					name: '张三 ',
-					attend: '2',
-					absent: '1',
-					Date:'2017.2.8'
-				}, {
-					id: 2,
-					name: '李四 ',
-					attend: '0',
-					absent: '3',
-					Date:'2017.2.8'
-				}, {
-					id: 3,
-					name: '王五 ',
-					attend: '3',
-					absent: '0',
-					Date:'2017.2.8'
-				}]
+			function setCookie(c_name, value, expiredays) {
+				var exdate = new Date()
+				exdate.setDate(exdate.getDate() + expiredays)
+				document.cookie = c_name + "=" + escape(value) +
+					((expiredays == null) ? "" : ";expires=" + exdate.toGMTString())
+			}
+			$(function() {
+				//$(".error_msg").hide();
+				// 默认账号输入框获得焦点  
+
+				$('#account').focus();
+				var $btn = $("#login");
+				$btn.on(
+					"click",
+					function() {
+						var account_value = $("#account").val();
+						var password_value = $("#password").val();
+						//						if($("#ck_rmbUser").attr("checked")) {
+						//							$.cookie("rmbUser", "true", {
+						//								expires: 7
+						//							}); //存储一个带7天期限的cookie  
+						//							$.cookie("account_value", account_value, {
+						//								expires: 7
+						//							});
+						//							$.cookie("password_value", password_value, {
+						//								expires: 7
+						//							});
+						//						} else {
+						//							$.cookie("rmbUser", "false", {
+						//								expire: -1
+						//							});
+						//							$.cookie("account_value", "", {
+						//								expires: -1
+						//							});
+						//							$.cookie("password_value", "", {
+						//								expires: -1
+						//							});
+						//						}
+						$.ajax({
+							type: "post", //访问WebService使用Post方式请求
+							async: true,
+							contentType: "application/json",
+							url: "http://aeshow1.ae-cnc.com:8000/json/services_login.asmx/checkIn", //调用WebService的地址和方法名称组合 ---- WsURL/方法名
+							data: "{strUser:'" + account_value + "',strPWD:'" + password_value + "'}", //这里是要传递的参数，格式为 data: "{paraName:paraValue}",下面将会看到       
+							dataType: 'json', //WebService 会返回Json类型
+							success: function(returnVal) { //回调函数，result，返回值
+								if(returnVal.d == "true") {
+									setCookie('username', account_value, 365);
+									window.location.href = "main.html";
+
+								} else {
+
+									if(account_value == '' || password_value == '') {
+										mui.toast("用户名或密码不能为空！");
+										if(account_value == '') {
+											$('#account').focus();
+										}
+										if(password_value == '') {
+											$('#password').focus();
+										}
+
+									}
+								}
+
+							},
+							error: function(XMLResponse) {
+								alert(" 错误信息：" + XMLResponse.responseText);
+							}
+						});
+					});
+
+				//				if($.cookie("rmbUser") == "true") {
+				//					$("#ck_rmbUser").attr("checked", true);
+				//					$("#account_value").val($.cookie("account_value"));
+				//					$("#password_value").val($.cookie("password_value"));
+				//				}
+				//				// 判断回车  
+				//				function keydown(e) {
+				//					var e = e || event;
+				//					if(e.keyCode == 13) {
+				//						$("#login").click();
+				//					}
+				//				}
 			});
 		</script>
-		<script type="text/javascript" src="js/login.js"></script>
+		<script src="js/login.js"></script>
 	</body>
 
 </html>

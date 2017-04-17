@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>[抢]单详情</title>
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="bootstrap/css/bootstrap-table.css">
+		<style>
+			.head-logo {
+				width: 100%;
+			}
+			
+			.foot-img {
+				width: 100%;
+			}
+			
+			nav {
+				background-image: url(images/menu_foot.jpg);
+				background-repeat: no-repeat;
+				background-size: cover;
+				height: 100%;
+			}
+			
+			a:focus,
+			a:hover {
+				text-decoration: none;
+			}
+			
+			body {
+				background-color: #efeff4;
+			}
+			
+			.col-md-12 {
+				padding-right: 0px;
+				padding-left: 0px;
+			}
+			
+			label {
+				float: left;
+				display: inline-block;
+				width: 25%;
+				margin-top: 5px;
+				text-align: center;
+				font-size: 1.5rem;
+			}
+			
+			input[type="text"],
+			select,
+			textarea {
+				float: left;
+				line-height: 15px;
+				width: 60%;
+				height: 35px;
+				margin-bottom: 15px;
+			}
+			
+			.sellcode {
+				position: relative;
+				margin-top: 20px;
+			}
+			
+			.flag {
+				width: 10%;
+				float: left;
+				color: #FF0000;
+				font-size: 1rem;
+				line-height: 30px;
+			}
+			
+			.form-control {
+				width: 60%;
+			}
+			
+			.form-group {
+				position: relative;
+				width: 100%
+			}
+			
+			.mui-btn {
+				position: relative;
+				margin: 0 auto;
+				font-size: 18px;
+				display: block;
+				width: 20%;
+				padding: 5px 0;
+				border-radius: 20px;
+				-webkit-box-shadow: inset rgba(0, 100, 223, 1) 0px 0px 20px 1px;
+				-moz-box-shadow: inset rgba(0, 100, 223, 1) 0px 0px 20px 1px;
+				-o-box-shadow: inset rgba(0, 100, 223, 1) 0px 0px 20px 1px;
+				box-shadow: inset rgba(0, 100, 223, 1) 0px 0px 20px 1px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">[抢]单详情</h1>
+			<a class=" mui-icon mui-icon-home-filled mui-pull-right main_botton"></a>
+		</header>
+		<div class="mui-content">
+			<div>
+				<img class="head-logo" src="images/menu_head.jpg" />
+			</div>
+
+			<div class=" col-md-12">
+				<div class="panel panel-default">
+
+					<div class="panel-body">
+						<table id="catch_table" data-toggle="table" data-method="post">
+							<thead>
+							</thead>
+						</table>
+					</div>
+
+				</div>
+				<div class="form-group">
+					<label form="name">问题类型：</label>
+					<select id="question_select" class="form-control">
+					</select>
+				</div>
+			</div>
+
+			<button id="submit_save" type="button" class="mui-btn ">抢入怀中</button>
+			<nav class="mui-bar mui-bar-tab">
+			</nav>
+		</div>
+		<script src="js/jquery.3.1.1.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>
+		<script src="bootstrap/js/bootstrap-table.js"></script>
+		<script src="bootstrap/js/bootstrap-table-zh-CN.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui('.mui-scroll-wrapper').scroll();
+			var main_botton = $(".main_botton");
+			main_botton.on("click", function() {
+				window.location.href = "main.html";
+			})
+		</script>
+		<script>
+			var catch_detailQT = sessionStorage.getItem("catchQT");
+			$.ajax({
+				type: "post", //访问WebService使用Post方式请求
+				async: true,
+				contentType: "application/json",
+				url: "http://aeshow1.ae-cnc.com:8000/json/services_login.asmx/getQuestionList", //调用WebService的地址和方法名称组合 ---- WsURL/方法名
+				data: "{}", //,谨记，传递变量时，一定要用字符串拼接的形式，这里是要传递的参数，格式为 data: "{paraName:paraValue}",下面将会看到       
+				dataType: 'json', //WebService 会返回Json类型
+				success: function(json) {
+					//alert(json.d);
+					//var table_data=json.d
+					var issue = eval("(" + json.d + ")");
+					$('#question_select tr:gt(0)').remove(); //删除之前的数据
+					$("#question_select").append("<option value='-1'>" + catch_detailQT + "</option>");
+					$("#question_select").append("<option value='-1'>--请选择--</option>");
+					$.each(issue, function(index, item) {
+						var id = issue[index].id;
+						var text = issue[index].IssueType;
+						$("#question_select").append("<option value='" + id + "'>" + text + "</option>");
+					});
+				},
+				error: function(XMLResponse) {
+					alert(" 错误信息：" + XMLResponse.responseText);
+				}
+			});
+			var strKFid = sessionStorage.getItem("catchID");
+
+			$.ajax({
+				type: "post", //访问WebService使用Post方式请求
+				async: true,
+				contentType: "application/json",
+				url: "http://aeshow1.ae-cnc.com:8000/json/services_login.asmx/getInfoByKFid", //调用WebService的地址和方法名称组合 ---- WsURL/方法名
+				data: "{strKFid:'" + strKFid + "'}", //,谨记，传递变量时，一定要用字符串拼接的形式，这里是要传递的参数，格式为 data: "{paraName:paraValue}",下面将会看到       
+				dataType: 'json', //WebService 会返回Json类型
+				success: function(json) {
+					//alert(json.d);
+					//var table_data=json.d
+					var obj = eval("(" + json.d + ")");
+					$('#catch_table tr:gt(0)').remove(); //删除之前的数据
+					var h = "<tr><td> 服务单号 </td><td> 机台编号</td><td> 问题描述</td></tr>";
+					$('#catch_table').prepend(h);
+					$("#catch_table").find("tbody>tr").eq(0).css({
+						"box-shadow": "inset rgba(126, 124, 124, 1) 0px 0px 40px 1px",
+						"text-align": "center"
+					});
+					var s = '';
+					for(var i = 0; i < obj.length; i++) {					
+						s += '<tr><td>' + obj[i].ServicesId + '</td><td>' + obj[i].SN + '</td><td>' + obj[i].InitIssue + '</td></tr>';
+						$('#catch_table').append(s);
+					}
+				},
+				error: function(XMLResponse) {
+					alert(" 错误信息：" + XMLResponse.responseText);
+				}
+			});
+
+			function getCookie(c_name) {
+				if(document.cookie.length > 0) {
+					c_start = document.cookie.indexOf(c_name + "=")
+					if(c_start != -1) {
+						c_start = c_start + c_name.length + 1
+						c_end = document.cookie.indexOf(";", c_start)
+						if(c_end == -1) c_end = document.cookie.length
+						return unescape(document.cookie.substring(c_start, c_end))
+					}
+				}
+				return ""
+			}
+			var strUserID = getCookie('username');
+			var $submit_save = $("#submit_save");
+			$submit_save.on(
+				"click",
+				function() {
+					$.ajax({
+						type: "post", //访问WebService使用Post方式请求
+						async: true,
+						contentType: "application/json",
+						url: "http://aeshow1.ae-cnc.com:8000/json/services_login.asmx/saveGetOrderIn30", //调用WebService的地址和方法名称组合 ---- WsURL/方法名
+						data: "{strKFid:'" + strKFid + "',strUserID:'" + strUserID + "'}", //这里是要传递的参数，格式为 data: "{paraName:paraValue}",下面将会看到       
+						dataType: 'json', //WebService 会返回Json类型
+						success: function(returnVal) {
+							if(returnVal.d == "Success") {
+								alert("   抢单成功      请到‘我的服务单’查看！");
+								window.location.href = "my.html";
+							}
+						},
+						error: function(XMLResponse) {
+							alert(" 错误信息：" + XMLResponse.responseText);
+						}
+					});
+				});
+		</script>
+
+	</body>
+
+</html>
