@@ -418,8 +418,7 @@
 						success: function(returnVal) {
 							if(returnVal.d == "Success") {
 								var s;
-								s += '<tr><td>新增</td><td>' + strMID + '</td><td>' + sessionStorage.getItem("MName") + '</td><td>' + sessionStorage.getItem("MSpec") + '</td><td>' + strQty + '</td><td>' +
-									sessionStorage.getItem("Unit") + '</td><td>' + strRemark + '</td></tr>';
+								s += '<tr><td>新增</td><td>' + strMID + '</td><td>' + sessionStorage.getItem("MName") + sessionStorage.getItem("MSpec") + sessionStorage.getItem("Unit")+'</td><td>' + strQty + '</td><td>'  + strRemark + '</td></tr>';
 								$("#materiel_change").find("tbody>tr").eq(1).before(s);
 							}
 						},
